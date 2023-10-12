@@ -326,8 +326,7 @@ uint32_t ADS1220_WE::readResult(){
 
     if(convMode == ADS1220_SINGLE_SHOT){
         start();
-    }
-    while(digitalRead(drdyPin) == HIGH) {}           
+    }           
     
     _spi->beginTransaction(mySPISettings);
     digitalWrite(csPin, LOW);
