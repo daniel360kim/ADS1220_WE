@@ -336,9 +336,7 @@ int32_t ADS1220_WE::getRawData()
 
 float ADS1220_WE::getTemperature()
 {
-    enableTemperatureSensor(true);
     uint32_t rawResult = readResult();
-    enableTemperatureSensor(false);
 
     uint16_t result = static_cast<uint16_t>(rawResult >> 18);
     if (result >> 13)
@@ -377,9 +375,6 @@ uint32_t ADS1220_WE::readResult()
     if (convMode == ADS1220_SINGLE_SHOT)
     {
         start();
-    }
-    while (digitalRead(drdyPin) == HIGH)
-    {
     }
 
     _spi->beginTransaction(mySPISettings);
