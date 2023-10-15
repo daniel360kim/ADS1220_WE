@@ -378,6 +378,9 @@ uint32_t ADS1220_WE::readResult()
     {
         start();
     }
+    while (digitalRead(drdyPin) == HIGH)
+    {
+    }
 
     _spi->beginTransaction(mySPISettings);
     digitalWrite(csPin, LOW);
