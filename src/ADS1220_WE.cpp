@@ -137,6 +137,7 @@ bool ADS1220_WE::isPGABypassed()
 
 void ADS1220_WE::setDataRate(ads1220DataRate rate)
 {
+    dataRate = rate;
     regValue = readRegister(ADS1220_CONF_REG_1);
     regValue &= ~0xE0;
     regValue |= rate;
@@ -145,6 +146,7 @@ void ADS1220_WE::setDataRate(ads1220DataRate rate)
 
 void ADS1220_WE::setOperatingMode(ads1220OpMode mode)
 {
+    opMode = mode;
     regValue = readRegister(ADS1220_CONF_REG_1);
     regValue &= ~0x18;
     regValue |= mode;

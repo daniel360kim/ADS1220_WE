@@ -212,6 +212,10 @@ public:
     int32_t getRawData();
     float getTemperature();
 
+    ads1220OpMode getOperatingMode() { return opMode; }
+    ads1220ConvMode getConversionMode() { return convMode; }
+    ads1220DataRate getDataRate() { return dataRate; }
+
 protected:
     SPIClass *_spi;
     SPISettings mySPISettings;
@@ -222,7 +226,9 @@ protected:
     uint8_t gain;
     bool refMeasurement;
     bool doNotBypassPgaIfPossible;
-    ads1220ConvMode convMode;
+    ads1220ConvMode convMode = ADS1220_SINGLE_SHOT;
+    ads1220OpMode opMode = ADS1220_NORMAL_MODE;
+    ads1220DataRate dataRate = ADS1220_DR_LVL_0;
 
     void forcedBypassPGA();
     int32_t getData();
